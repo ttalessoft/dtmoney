@@ -1,25 +1,12 @@
 import { format } from 'date-fns';
-import { useEffect, useState } from 'react';
-import { formatDiagnostics } from 'typescript';
-import { api } from '../../services/api';
+import { useContext } from 'react';
+import { TransactionContext } from '../../TransactionsContext';
 import { Container } from './styles';
 
-interface ITransaction {
-  id: number;
-  title: string;
-  amount: number;
-  type: string;
-  category: string;
-  createdAt: string;
-}
-
 export function TransactionsTable() {
-  const [transactions, setTransactions] = useState<ITransaction[]>([]);
+  const { transactions } = useContext(TransactionContext);
 
-  useEffect(() => {
-    api.get('/transactions')
-      .then(response => setTransactions(response.data.transactions))
-  }, [])
+  console.log('transactionsTable', transactions);
 
   return (
     <Container>
