@@ -6,8 +6,6 @@ import { Container } from './styles';
 export function TransactionsTable() {
   const { transactions } = useContext(TransactionContext);
 
-  console.log('transactionsTable', transactions);
-
   return (
     <Container>
       <table>
